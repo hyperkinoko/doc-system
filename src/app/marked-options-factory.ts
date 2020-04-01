@@ -14,8 +14,9 @@ const escapeReplacements = {
   '<': '&lt;',
   '>': '&gt;',
   '"': '&quot;',
-  "'": '&#39;'
+  '\'': '&#39;'
 };
+
 const getEscapeReplacement = (ch) => escapeReplacements[ch];
 
 function escape(html, encode) {
@@ -74,7 +75,7 @@ export function markedOptionsFactory(): MarkedOptions {
   };
   
   return {
-    renderer: renderer,
+    renderer,
     gfm: true,
     breaks: false,
     pedantic: false,

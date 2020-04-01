@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-md-viewer',
@@ -7,11 +8,18 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class MdViewerComponent implements OnInit {
-  mdUrl = 'https://s3-ap-northeast-1.amazonaws.com/files-md.pigumer.com/markdown.md';
+  mdBase = 'https://in-osaka.pigumer.gr.jp/md-files/';
+  mdUrl = this.mdBase + 'index.md';
   
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = (params.get('docId') || '');
+      console.log('docId : ' + id);
+    });
   }
 
 }

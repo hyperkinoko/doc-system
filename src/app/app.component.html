@@ -1,1 +1,8 @@
-<app-md-viewer></app-md-viewer>
+<mat-sidenav-container class="wrap">
+  <mat-sidenav mode="side" opened>
+    <app-index-menu></app-index-menu>
+  </mat-sidenav>
+  <mat-sidenav-content class="main">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
