@@ -1,36 +1,27 @@
-import {InjectionToken} from '@angular/core';
-
-export interface IndexNode {
-  name: string;
-  id?: string;
-  route?: string;
-  children?: IndexNode[];
-}
+import {IndexNode} from '../../app/index-menu/index-menu.service';
 
 export const MD_INDEX_DATA: IndexNode[] = [
   {
     name: '開発ガイド',
-    route: 'docs/',
+    path: 'development-guide--index',
     children: [
       {
         name: 'API設計ガイド',
-        id: 'development-guide--api-design-guide',
-        route: 'DevelopmentGuide/ApiDesignGuide.md'
+        path: 'development-guide--api-design-guide'
       },
       {
         name: 'バックエンド開発ガイド',
-        route: 'docs/DevelopmentGuide/BackendDevelopGuide'
+        path: 'development-guide--backend-devlopment-guide'
       },
       {
         name: 'フロントエンド開発ガイド',
-        route: 'docs/DevelopmentGuide/DevelopGuide'
+        path: 'development-guide--frontend-devlopment-guide'
       },
       {
         name: 'コーディング規約'
       },
       {
-        name: 'Storybook',
-        route: 'docs/DevelopmentGuide/Storybook'
+        name: 'Storybook'
       }
     ]
   },
@@ -39,21 +30,20 @@ export const MD_INDEX_DATA: IndexNode[] = [
     children: [
       {
         name: 'このサイトに貢献する',
-        route: 'docs/Documentation/contribution'
+        path: 'documentation--contribution'
       },
       {
         name: 'markdown記法について',
-        route: 'docs/Documentation/markdown'
+        path: 'documentation--markdown'
       },
       {
         name: 'mermaidについて',
-        route: 'docs/Documentation/mermaid'
+        path: 'documentation--mermaid'
       }
     ]
   },
   {
     name: 'コンテキストマップ',
-    route: 'docs/context/index'
   },
   {
     name: 'フロントエンドプロトタイプ',
@@ -80,4 +70,3 @@ export const MD_INDEX_DATA: IndexNode[] = [
   }
 ];
 
-export const MD_INDEX = new InjectionToken<IndexNode[]>('md-index');

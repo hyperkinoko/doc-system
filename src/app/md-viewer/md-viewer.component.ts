@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {IndexMenuService} from '../index-menu/index-menu.service';
 
 @Component({
   selector: 'app-md-viewer',
@@ -9,16 +10,19 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MdViewerComponent implements OnInit {
   mdBase = 'https://in-osaka.pigumer.gr.jp/md-files/';
-  mdUrl = this.mdBase + 'index.md';
+  mdUrl = 'index.md';
+  mdFullPath: string;
   
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private indexMenuService: IndexMenuService
   ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const id = (params.get('docId') || '');
-      console.log('docId : ' + id);
+      const path = params.get('path');
+      this.mdUrl = path.replace(/--/gi, '/') + '.md';
+      this.mdFullPath = this.mdBase + this.mdUrl;
     });
   }
 

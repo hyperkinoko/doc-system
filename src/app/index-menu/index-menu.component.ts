@@ -1,15 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {IndexNode, MD_INDEX} from '../../assets/data/md-index';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-import {FlatTreeControl} from '@angular/cdk/tree';
-
-/** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-  route: string;
-}
+import {MatTreeNestedDataSource} from '@angular/material/tree';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {IndexNode, MD_INDEX} from './index-menu.service';
 
 @Component({
   selector: 'app-index-menu',
@@ -17,26 +9,9 @@ interface ExampleFlatNode {
   styleUrls: ['./index-menu.component.scss']
 })
 export class IndexMenuComponent implements OnInit {
-  private _transformer = (node: IndexNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level: level,
-      route: node.route
-    };
-  }
+  treeControl = new NestedTreeControl<IndexNode>(node => node.children);
   
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level, node => node.expandable);
-  
-  treeFlattener = new MatTreeFlattener(
-    this._transformer,
-    node => node.level,
-    node => node.expandable,
-    node => node.children
-  );
-  
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+  dataSource = new MatTreeNestedDataSource<IndexNode>();
   
   constructor(
     @Inject(MD_INDEX) private mdIndex: IndexNode[]
@@ -44,7 +19,7 @@ export class IndexMenuComponent implements OnInit {
     this.dataSource.data = this.mdIndex;
   }
   
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: IndexNode) => !!node.children && node.children.length > 0;
 
   ngOnInit(): void {
   }

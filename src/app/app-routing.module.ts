@@ -4,7 +4,7 @@ import {MdViewerComponent} from './md-viewer/md-viewer.component';
 
 
 const routes: Routes = [
-  {path: ':docId', component: MdViewerComponent},
+  {path: ':path', component: MdViewerComponent},
   {path: '', component: MdViewerComponent}
 ];
 
