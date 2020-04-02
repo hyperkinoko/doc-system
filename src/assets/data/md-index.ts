@@ -11,11 +11,11 @@ export const MD_INDEX_DATA: IndexNode[] = [
       },
       {
         name: 'バックエンド開発ガイド',
-        path: 'development-guide--backend-devlopment-guide'
+        path: 'development-guide--backend-development-guide'
       },
       {
         name: 'フロントエンド開発ガイド',
-        path: 'development-guide--frontend-devlopment-guide'
+        path: 'development-guide--frontend-development-guide'
       },
       {
         name: 'コーディング規約'
