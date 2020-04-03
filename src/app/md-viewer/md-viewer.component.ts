@@ -9,10 +9,10 @@ import {IndexMenuService} from '../index-menu/index-menu.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class MdViewerComponent implements OnInit {
-  mdBase = 'https://in-osaka.pigumer.gr.jp/md-files/';
+  mdBase = '/md-files/';
   mdUrl = 'index.md';
   mdFullPath: string;
-  
+
   constructor(
     private route: ActivatedRoute,
     private indexMenuService: IndexMenuService
