@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environmentSample.sample.ts` with `environmentSample.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environmentSample = {
+export const environment = {
   production: false,
   docsBasePath: '<basepath-to-your-docs>'
 };
