@@ -22,7 +22,9 @@ export class MdViewerComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const path = params.get('path');
-      this.mdUrl = path.replace(/--/gi, '/') + '.md';
+      if (path) {
+        this.mdUrl = path.replace(/--/gi, '/') + '.md';
+      }
       this.mdFullPath = this.mdBase + this.mdUrl;
     });
   }
