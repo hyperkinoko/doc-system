@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IndexMenuService} from '../index-menu/index-menu.service';
+import {DOCS_BASE_PATH} from '../../../configure';
 
 @Component({
   selector: 'app-md-viewer',
@@ -9,11 +10,11 @@ import {IndexMenuService} from '../index-menu/index-menu.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class MdViewerComponent implements OnInit {
-  mdBase = '/md-files/';
   mdUrl = 'index.md';
   mdFullPath: string;
 
   constructor(
+    @Inject(DOCS_BASE_PATH) private mdBase: string,
     private route: ActivatedRoute,
     private indexMenuService: IndexMenuService
   ) { }

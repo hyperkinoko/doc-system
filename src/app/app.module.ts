@@ -13,6 +13,8 @@ import { IndexMenuComponent } from './index-menu/index-menu.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule} from '@angular/material/button';
+import {environment} from '../environments/environment';
+import {DOCS_BASE_PATH} from '../../configure';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatTreeModule,
     MatButtonModule
+  ],
+  providers: [
+    {provide: DOCS_BASE_PATH, useValue: environment.docsBasePath}
   ],
   bootstrap: [AppComponent]
 })
