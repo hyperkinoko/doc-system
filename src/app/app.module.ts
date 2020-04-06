@@ -12,9 +12,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { IndexMenuComponent } from './index-menu/index-menu.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
-import {MD_INDEX_DATA} from '../assets/data/md-index';
 import {MatButtonModule} from '@angular/material/button';
-import {MD_INDEX} from './index-menu/index-menu.service';
 
 @NgModule({
   declarations: [
@@ -38,9 +36,6 @@ import {MD_INDEX} from './index-menu/index-menu.service';
     MatIconModule,
     MatTreeModule,
     MatButtonModule
-  ],
-  providers: [
-    {provide: MD_INDEX, useValue: MD_INDEX_DATA}
   ],
   bootstrap: [AppComponent]
 })

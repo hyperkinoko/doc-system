@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {NestedTreeControl} from '@angular/cdk/tree';
-import {IndexNode, MD_INDEX} from './index-menu.service';
+import {IndexMenuService, MdIndexNode} from './index-menu.service';
 
 @Component({
   selector: 'app-index-menu',
@@ -9,17 +9,19 @@ import {IndexNode, MD_INDEX} from './index-menu.service';
   styleUrls: ['./index-menu.component.scss']
 })
 export class IndexMenuComponent implements OnInit {
-  treeControl = new NestedTreeControl<IndexNode>(node => node.children);
+  treeControl = new NestedTreeControl<MdIndexNode>(node => node.children);
   
-  dataSource = new MatTreeNestedDataSource<IndexNode>();
+  dataSource = new MatTreeNestedDataSource<MdIndexNode>();
   
   constructor(
-    @Inject(MD_INDEX) private mdIndex: IndexNode[]
+    private indexMenuService: IndexMenuService
   ) {
-    this.dataSource.data = this.mdIndex;
+    this.indexMenuService.mdIndex.subscribe((nodes: MdIndexNode[] ) => {
+      this.dataSource.data = nodes;
+    });
   }
   
-  hasChild = (_: number, node: IndexNode) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: MdIndexNode) => !!node.children && node.children.length > 0;
 
   ngOnInit(): void {
   }
