@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  docsBasePath: '<basepath-to-your-docs>'
+  docsBasePath: 'https://in-osaka.pigumer.gr.jp/md-files/'
 };
 
 /*
