@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DOCS_BASE_PATH} from '../../../configure';
+import * as mermaid from 'mermaid';
 
 @Component({
   selector: 'app-md-viewer',
@@ -25,6 +26,11 @@ export class MdViewerComponent implements OnInit {
       }
       this.mdFullPath = this.mdBase + this.mdUrl;
     });
+  }
+  
+  onLoad() {
+    const elements = document.getElementsByClassName('mermaid');
+    mermaid.init();
   }
 
 }

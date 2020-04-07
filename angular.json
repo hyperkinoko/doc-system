@@ -33,9 +33,7 @@
               "src/assets/js/prism.css"
             ],
             "scripts": [
-              "src/assets/js/prism.js",
-              "./node_modules/mermaid/dist/mermaid.js"
-            ]
+              "src/assets/js/prism.js"            ]
           },
           "configurations": {
             "production": {
