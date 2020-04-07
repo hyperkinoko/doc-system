@@ -29,7 +29,6 @@ export class MdViewerComponent implements OnInit {
   }
   
   onLoad() {
-    const elements = document.getElementsByClassName('mermaid');
     mermaid.init();
   }
 
