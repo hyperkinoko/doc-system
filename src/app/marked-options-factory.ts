@@ -45,10 +45,16 @@ export function markedOptionsFactory(): MarkedOptions {
   };
   
   renderer.link = (href: string, title: string, text: string) => {
-    // console.log(href);
-    // if (href.match(/^\.{1,2}|\/+/)) {
-    //   console.log('マッチした');
-    // }
+    // マークダウンファイルへの相対リンクのときだけ反応させる
+    if (href.match(/^[\./]+.*\.md(#.+)?$/)) {
+      console.log('マッチした');
+      // 最初の「../../」などを取り除く
+      href = href.replace(/^[\./]+/, '');
+      // 最後の「.md」を取り除く
+      href = href.replace(/\.md(?=(#.+)?$)/, '');
+      // 途中の「/」を「--」に変える
+      href = href.replace(/\//, '--');
+    }
     href = cleanUrl(renderer.options.sanitize, renderer.options.baseUrl, href);
     if (href === null) {
       return text;
@@ -62,7 +68,7 @@ export function markedOptionsFactory(): MarkedOptions {
   };
 
   renderer.image = (href: string, title: string, text: string) => {
-    href = href.replace(/^(\.{0,2}\/+)+/, '');
+    href = href.replace(/^[\./]+/, '');
     href = cleanUrl(renderer.options.sanitize, environment.docsBasePath, href);
     if (href === null) {
       return text;
