@@ -14,7 +14,7 @@ export interface MdIndexNode {
 })
 export class IndexMenuService {
   private _mdIndex: Observable<MdIndexNode[]> = this.http.get<MdIndexNode[]>(this.basePath + 'md-index.json');
-  private _findedIndex: MdIndexNode;
+  // private _findedIndex: MdIndexNode;
   
   constructor(
     @Inject(DOCS_BASE_PATH) private basePath: string,
@@ -25,17 +25,17 @@ export class IndexMenuService {
     return this._mdIndex;
   }
   
-  private find(array: MdIndexNode[], path: string) {
-    let result;
-    array.some(o => result = o.path === path ? o : this.find(o.children || [], path));
-    return result;
-  }
-  
-  getIndexNodeByPath(path: string): MdIndexNode {
-    // return this.find(this._mdIndex, path);
-    this._mdIndex.subscribe((nodes: MdIndexNode[]) => {
-      this._findedIndex = this.find(nodes, path);
-    })
-    return this._findedIndex;
-  }
+  // private find(array: MdIndexNode[], path: string) {
+  //   let result;
+  //   array.some(o => result = o.path === path ? o : this.find(o.children || [], path));
+  //   return result;
+  // }
+  //
+  // getIndexNodeByPath(path: string): MdIndexNode {
+  //   // return this.find(this._mdIndex, path);
+  //   this._mdIndex.subscribe((nodes: MdIndexNode[]) => {
+  //     this._findedIndex = this.find(nodes, path);
+  //   })
+  //   return this._findedIndex;
+  // }
 }

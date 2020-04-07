@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {IndexMenuService} from '../index-menu/index-menu.service';
 import {DOCS_BASE_PATH} from '../../../configure';
 
 @Component({
@@ -15,8 +14,7 @@ export class MdViewerComponent implements OnInit {
 
   constructor(
     @Inject(DOCS_BASE_PATH) private mdBase: string,
-    private route: ActivatedRoute,
-    private indexMenuService: IndexMenuService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
