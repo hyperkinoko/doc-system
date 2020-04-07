@@ -63,7 +63,7 @@ export function markedOptionsFactory(): MarkedOptions {
     }
     
     // コードがHTMLのときは、タグをエスケープする
-    escaped = !(lang === 'html' || lang === 'markup');
+    escaped = !(lang === 'html' || lang === 'markup'  || lang === 'xml');
     
     //
     return '<pre class="line-numbers">' + fileTag + '<code class="'
