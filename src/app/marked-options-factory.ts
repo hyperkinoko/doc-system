@@ -1,43 +1,13 @@
 import {MarkedOptions, MarkedRenderer} from 'ngx-markdown';
 
-/* @NOTE
- escape関数とそこで使う定数を
- https://github.com/markedjs/marked/blob/master/src/helpers.js
- からコピペしています。
- */
-const escapeTest = /[&<>"']/;
-const escapeReplace = /[&<>"']/g;
-const escapeTestNoEncode = /[<>"']|&(?!#?\w+;)/;
-const escapeReplaceNoEncode = /[<>"']|&(?!#?\w+;)/g;
-const escapeReplacements = {
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  '\'': '&#39;'
-};
-
-const getEscapeReplacement = (ch) => escapeReplacements[ch];
-
-function escape(html, encode) {
-  if (encode) {
-    if (escapeTest.test(html)) {
-      return html.replace(escapeReplace, getEscapeReplacement);
-    }
-  } else {
-    if (escapeTestNoEncode.test(html)) {
-      return html.replace(escapeReplaceNoEncode, getEscapeReplacement);
-    }
-  }
-  
-  return html;
-}
-// escapeのコピペここまで
+import {escape, cleanUrl} from 'marked/src/helpers';
+import {environment} from '../environments/environment';
 
 export function markedOptionsFactory(): MarkedOptions {
   const renderer = new MarkedRenderer();
   
-  renderer.code = function(code, infostring, escaped) {
+  // コードブロックのレンダリング
+  renderer.code = (code, infostring, escaped) => {
     // :filenameでQiitaライクにファイル名を付加できるようにする
     const delimiter = ':';
     const info = infostring.split(delimiter);
@@ -67,11 +37,43 @@ export function markedOptionsFactory(): MarkedOptions {
     
     //
     return '<pre class="line-numbers">' + fileTag + '<code class="'
-      + this.options.langPrefix
+      + renderer.options.langPrefix
       + escape(lang, true)
       + '">'
       + (escaped ? code : escape(code, true))
       + '</code></pre>\n';
+  };
+  
+  renderer.link = (href: string, title: string, text: string) => {
+    // console.log(href);
+    // if (href.match(/^\.{1,2}|\/+/)) {
+    //   console.log('マッチした');
+    // }
+    href = cleanUrl(renderer.options.sanitize, renderer.options.baseUrl, href);
+    if (href === null) {
+      return text;
+    }
+    let out = '<a href="' + escape(href) + '"';
+    if (title) {
+      out += ' title="' + title + '"';
+    }
+    out += '>' + text + '</a>';
+    return out;
+  };
+
+  renderer.image = (href: string, title: string, text: string) => {
+    href = href.replace(/^(\.{0,2}\/+)+/, '');
+    href = cleanUrl(renderer.options.sanitize, environment.docsBasePath, href);
+    if (href === null) {
+      return text;
+    }
+  
+    let out = '<img src="' + href + '" alt="' + text + '"';
+    if (title) {
+      out += ' title="' + title + '"';
+    }
+    out += renderer.options.xhtml ? '/>' : '>';
+    return out;
   };
   
   return {
