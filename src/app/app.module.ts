@@ -15,12 +15,14 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule} from '@angular/material/button';
 import {environment} from '../environments/environment';
 import {DOCS_BASE_PATH} from '../../configure';
+import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MdViewerComponent,
-    IndexMenuComponent
+    IndexMenuComponent,
+    PrivacypolicyComponent
   ],
   imports: [
     BrowserModule,
