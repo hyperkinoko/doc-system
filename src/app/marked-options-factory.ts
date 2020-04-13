@@ -33,8 +33,9 @@ export function markedOptionsFactory(): MarkedOptions {
     }
     
     // コードがHTMLのときは、タグをエスケープする
-    escaped = !(lang === 'html' || lang === 'markup'  || lang === 'xml');
-    
+    // デフォルトでfalseでいいかも
+    // escaped = !(lang === 'html' || lang === 'markup'  || lang === 'xml');
+    escaped = false;
     //
     return '<pre class="line-numbers">' + fileTag + '<code class="'
       + renderer.options.langPrefix
