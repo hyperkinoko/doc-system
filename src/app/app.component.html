@@ -1,3 +1,16 @@
+<mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between">
+    <span><img src="../assets/images/logo.png" alt="ロゴ"></span>
+    <span fxFlex="grow"></span>
+    <ng-container *ngIf="(user$ | async) as user; else notSignedIn">
+      <span>{{user}}</span>
+      <span><button mat-flat-button (click)="signOut()" color="accent"><mat-icon class="button-inner-icon">lock</mat-icon>SignOut</button></span>
+    </ng-container>
+    <ng-template #notSignedIn>
+      <span><button mat-flat-button (click)="signIn()" color="accent"><mat-icon class="button-inner-icon">lock</mat-icon>SignIn</button></span>
+    </ng-template>
+  </mat-toolbar-row>
+</mat-toolbar>
 <mat-sidenav-container class="wrap">
   <mat-sidenav mode="side" opened>
     <app-index-menu></app-index-menu>

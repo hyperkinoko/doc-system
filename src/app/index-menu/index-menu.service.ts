@@ -13,13 +13,15 @@ export interface MdIndexNode {
   providedIn: 'root'
 })
 export class IndexMenuService {
-  private _mdIndex: Observable<MdIndexNode[]> = this.http.get<MdIndexNode[]>(this.basePath + 'md-index.json');
+  private _mdIndex: Observable<MdIndexNode[]>;
   // private _findedIndex: MdIndexNode;
   
   constructor(
     @Inject(DOCS_BASE_PATH) private basePath: string,
     private http: HttpClient
-  ) {}
+  ) {
+    this._mdIndex = this.http.get<MdIndexNode[]>(this.basePath + 'md-index.json');
+  }
   
   get mdIndex(): Observable<MdIndexNode[]> {
     return this._mdIndex;

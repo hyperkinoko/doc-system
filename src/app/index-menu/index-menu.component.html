@@ -6,7 +6,12 @@
         <!-- use a disabled button to provide padding for tree leaf -->
         <button mat-icon-button disabled></button>
         <ng-container *ngIf="node.path; else noLink">
-          <a [routerLink]="['/', node.path]">{{node.name}}</a>
+          <ng-container *ngIf="node.path.startsWith('http'); else innerDoc">
+            <a [href]="node.path" target="_blank">{{node.name}}</a>
+          </ng-container>
+          <ng-template #innerDoc>
+            <a [routerLink]="['/', node.path]">{{node.name}}</a>
+          </ng-template>
         </ng-container>
         <ng-template #noLink>
           {{node.name}}
@@ -24,7 +29,12 @@
             </mat-icon>
           </button>
           <ng-container *ngIf="node.path; else noLink">
-            <a [routerLink]="['/', node.path]">{{node.name}}</a>
+            <ng-container *ngIf="node.path.startsWith('http'); else innerDoc">
+              <a [href]="node.path" target="_blank">{{node.name}}</a>
+            </ng-container>
+            <ng-template #innerDoc>
+              <a [routerLink]="['/', node.path]">{{node.name}}</a>
+            </ng-template>
           </ng-container>
           <ng-template #noLink>
             {{node.name}}
