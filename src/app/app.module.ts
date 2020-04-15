@@ -16,10 +16,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {environment} from '../environments/environment';
 import {DOCS_BASE_PATH} from '../../configure';
 import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
-import {AUTH_CONFIG} from './authentication/configure';
-import {AuthenticationModule} from './authentication/authentication.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {AUTH_CONFIG, AuthenticationModule} from '@remore/authentication';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FlexLayoutModule
   ],
   providers: [
-    {provide: DOCS_BASE_PATH, useValue: environment.docsBasePath}
+    {provide: DOCS_BASE_PATH, useValue: environment.docsBasePath},
+    {provide: AUTH_CONFIG, useValue: environment.auth}
   ],
   bootstrap: [AppComponent]
 })
