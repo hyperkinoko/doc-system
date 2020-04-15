@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="toolbar">
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between">
-    <span><img src="../assets/images/logo.png" alt="ロゴ"></span>
+    <span><a routerLink="/"><img src="../assets/images/logo.png" alt="ロゴ"></a></span>
     <span fxFlex="grow"></span>
     <ng-container *ngIf="(user$ | async) as user; else notSignedIn">
       <span>{{user}}</span>
