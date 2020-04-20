@@ -1,0 +1,23 @@
+[
+  {
+    "name": "ドキュメント",
+    "children": [
+      {
+        "name": "コンテキストマップ"
+      },
+      {
+        "name": "概念モデル図"
+      },
+      {
+        "name": "仕様書",
+        "path": "specification--specification",
+        "children": [
+          {
+            "name": "API仕様書",
+            "path": "/api-specification/index.html"
+          }
+        ]
+      }
+    ]
+  }
+]

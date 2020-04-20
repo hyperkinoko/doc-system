@@ -6,7 +6,7 @@
         <!-- use a disabled button to provide padding for tree leaf -->
         <button mat-icon-button disabled></button>
         <ng-container *ngIf="node.path; else noLink">
-          <ng-container *ngIf="node.path.startsWith('http'); else innerDoc">
+          <ng-container *ngIf="node.path.includes('/'); else innerDoc">
             <a [href]="node.path" target="_blank">{{node.name}}</a>
           </ng-container>
           <ng-template #innerDoc>

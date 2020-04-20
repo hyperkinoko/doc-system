@@ -26,7 +26,7 @@ export class IndexMenuService {
   get mdIndex(): Observable<MdIndexNode[]> {
     return this._mdIndex;
   }
-  
+  ''
   // private find(array: MdIndexNode[], path: string) {
   //   let result;
   //   array.some(o => result = o.path === path ? o : this.find(o.children || [], path));
