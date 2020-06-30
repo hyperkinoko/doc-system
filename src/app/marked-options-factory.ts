@@ -54,7 +54,7 @@ export function markedOptionsFactory(): MarkedOptions {
       // 最後の「.md」を取り除く
       href = href.replace(/\.md(?=(#.+)?$)/, '');
       // 途中の「/」を「--」に変える
-      href = href.replace(/\//, '--');
+      href = href.replace(/\//g, '--');
     }
     href = cleanUrl(renderer.options.sanitize, renderer.options.baseUrl, href);
     if (href === null) {

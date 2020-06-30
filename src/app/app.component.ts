@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AuthenticationService} from '@remore/authentication';
+import {AuthenticationService} from '@re-more/authentication';
 
 @Component({
   selector: 'app-root',

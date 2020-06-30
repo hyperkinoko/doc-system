@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@auth0/angular-jwt": "^4.0.0",
-    "@remore/authentication": "0.0.1",
+    "@re-more/authentication": "0.0.2",
     "mermaid": "^8.4.8",
     "ngx-markdown": "^9.0.0",
     "rxjs": "~6.5.4",

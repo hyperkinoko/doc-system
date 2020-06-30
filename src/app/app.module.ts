@@ -18,7 +18,7 @@ import {DOCS_BASE_PATH} from '../../configure';
 import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {AUTH_CONFIG, AuthenticationModule} from '@remore/authentication';
+import {AUTH_CONFIG, AuthenticationModule} from '@re-more/authentication';
 
 @NgModule({
   declarations: [

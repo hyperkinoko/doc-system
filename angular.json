@@ -69,7 +69,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "remore-docs:build"
+            "browserTarget": "remore-docs:build",
+            "port": 4200
           },
           "configurations": {
             "production": {
