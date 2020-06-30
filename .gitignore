@@ -49,4 +49,4 @@ testem.log
 Thumbs.db
 
 # docs Data
-/src/assets/dummy-data
+src/assets/dummy-data
