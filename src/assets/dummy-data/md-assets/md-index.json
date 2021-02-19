@@ -1,22 +1,18 @@
 [
   {
-    "name": "ドキュメント",
+    "name": "ドキュメンテーション",
     "children": [
       {
-        "name": "コンテキストマップ"
+        "name": "このサイトに貢献する",
+        "path": "documentation--contribution"
       },
       {
-        "name": "概念モデル図"
+        "name": "markdown記法について",
+        "path": "documentation--markdown"
       },
       {
-        "name": "仕様書",
-        "path": "specification--specification",
-        "children": [
-          {
-            "name": "API仕様書",
-            "path": "/api-specification/index.html"
-          }
-        ]
+        "name": "mermaidについて",
+        "path": "documentation--mermaid"
       }
     ]
   }
