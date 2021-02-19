@@ -15,7 +15,6 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule} from '@angular/material/button';
 import {environment} from '../environments/environment';
 import {DOCS_BASE_PATH} from '../../configure';
-import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {AUTH_CONFIG, AuthenticationModule} from '@re-more/authentication';
@@ -24,8 +23,7 @@ import {AUTH_CONFIG, AuthenticationModule} from '@re-more/authentication';
   declarations: [
     AppComponent,
     MdViewerComponent,
-    IndexMenuComponent,
-    PrivacypolicyComponent
+    IndexMenuComponent
   ],
   imports: [
     BrowserModule,
